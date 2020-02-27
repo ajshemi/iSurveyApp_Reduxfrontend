@@ -15,9 +15,11 @@ const Product = (props) => {
         <Card.Header>{`${props.product.name} |${props.product.id}`}</Card.Header>
         {/* <Card.Meta>Joined in 2016</Card.Meta> */}
             <Card.Description>
-        {/* Daniel is a comedian living in Nashville. */}
+              
+       
             <ul>{arrayOfIngredients}</ul>
             </Card.Description>
+            {props.user ? `Your Rating ${props.product.rating}` : ''}
         </Card.Content>
 
     </Card>   

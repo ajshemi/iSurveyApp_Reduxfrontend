@@ -3,15 +3,15 @@ import {connect} from 'react-redux'
 import {deleteCommentFromState} from '../Redux/actions'
 
 class Comment extends Component {
+    //receives props.comment from Comments
+    // console.log(this.props.comment)
     handleDelete=() => {
-        console.log(this.props.user.comment)
-
         let token = localStorage.getItem('token')
-        if(this.props.user.comment.id)
+        if(this.props.comment.id)
         {
-          fetch(`http://localhost:3000/comments/${this.props.user.comment.id}`, {
+          fetch(`http://localhost:3000/comments/${this.props.comment.id}`, {
             method: "DELETE",
-            body: JSON.stringify(this.props.user.comment),
+            body: JSON.stringify(this.props.comment),
             headers: {
               'content-type': "application/json",
               "Authorization": `bearer ${token}`
@@ -22,8 +22,7 @@ class Comment extends Component {
             // console.log(comment)
             this.props.deleteCommentFromState(comment)
           })
-
-        
+          //dispatch delete action with the comment response from the database
       }
     }
     render() {
@@ -32,10 +31,10 @@ class Comment extends Component {
         // const {id,user_comment}=this.props.user.comment
         // {user_comment}
         return (
-            <div>
-                <h2>{this.props.user.comment.user_comment}</h2>
+            <li>
+                <h2>{this.props.comment.user_comment}</h2>
                 <button onClick={this.handleDelete}>X</button>
-            </div>
+            </li>
         );
     }
 }

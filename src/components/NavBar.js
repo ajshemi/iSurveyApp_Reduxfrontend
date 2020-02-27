@@ -19,6 +19,9 @@ const NavBar = () => {
       <li>
         <NavLink to="/rating">UserRating</NavLink>
       </li>
+      <li>
+        <NavLink to="/allcomments">AllComments</NavLink>
+      </li>
     </ul>
   )
 };

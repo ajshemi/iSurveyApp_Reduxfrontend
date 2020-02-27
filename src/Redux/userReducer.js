@@ -1,22 +1,30 @@
-const initialState = {user: {user_ratings:[],comment:{},token:''}}
+const initialState = {user: {user_ratings:[],comments:[],token:''}}
 
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
   
       case "SAVE_USER_TO_STATE":
-  
+
         return {...state, user: action.user.user, token: action.user.token}
 
 
-      case "ADD_COMMENT":
-        console.log(action.comment)
-        return {...state, user:{...state.user, comment:{...state.user.comment, user_id: action.comment.user_id, user_comment:action.comment.user_comment}}}
-        // return {...state, ...action.payload}
+      case "ClEAR_USER_FROM_STATE":
+        // let clearState=initialState
+        return initialState
+
   
+      case "ADD_COMMENT":
+
+        console.log(action.comment)
+        // let newComment={user_id: action.comment.user_id, user_comment:action.comment.user_comment}
+        return {...state, user:{...state.user, comments:[...state.user.comments,action.comment ]}}
+        // return {...state, ...action.payload}
+
       case "UPDATE_USER_RATING":
         let newArray=[...state.user.user_ratings]
-        let updatedArray=newArray.map(product=>{
+        let updatedArray=newArray.map(product=>
+          {
           if(product.id===action.review.product_id){
             return {...product,rating: action.review.rating}
           }
@@ -24,7 +32,6 @@ const userReducer = (state = initialState, action) => {
             return product
           }
         })
-  
         return {
           ...state,
           user: {
@@ -34,7 +41,10 @@ const userReducer = (state = initialState, action) => {
         }
 
       case "DELETE_COMMENT":
-        return {...state, user:{...state.user, comment:{}}}
+
+        let filterArray=state.user.comments.filter(comment=>comment.id !== action.comment.id)
+
+        return {...state, user:{...state.user, comments:filterArray}}
           // {...state.user.comment,user_id: action.comment.user_id, user_comment:action.comment.user_comment}}}
   
       default:

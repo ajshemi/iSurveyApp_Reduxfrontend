@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-
 import {addCommentToState} from '../Redux/actions'
 
 class CommentInput extends Component {
-
+  //local component state
   state = {
     user_comment:''
   }
+
   handleSubmit = (e) => {
+    //fetch with the new set state 
     e.preventDefault()
-    console.log(this.state)
-    console.log(this.props)
-    // console.log(this.props.user.comment.id)
+    // console.log(this.state)
+    // console.log(this.props)
     let token = localStorage.getItem('token')
-    // console.log(token)
-    // "http://localhost:3000/reviews",
+    console.log(token)
     fetch("http://localhost:3000/comments",{
         method: "POST",
         body:JSON.stringify(this.state),
@@ -25,16 +24,17 @@ class CommentInput extends Component {
           "Authorization": `bearer ${token}`
         }
       })
-      .then(r => r.json())
+      .then(res => res.json())
       .then((comment) => {
         console.log(comment)
         this.props.addCommentToState(comment)
       })
-    // this.props.handleAddComment(this.state)
+    // dispatch add comment action with the comment response from the database
+    // the reducer will update the application state with this action
   }
 
   handleChange = (e) => {
-    // console.log(e.target.value)
+    //set this component state "local state"
     let {name, value} = e.target
     this.setState({
       [name]: value
@@ -42,8 +42,7 @@ class CommentInput extends Component {
   }
 
   render() {
-    console.log(this.props.user.comment)
-
+    // console.log(this.props.user.comment)
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="comment">Overall Comment:</label>
@@ -52,9 +51,6 @@ class CommentInput extends Component {
       </form>
     );
   }
-
 }
-
-
 
 export default connect(null,{addCommentToState})(CommentInput);

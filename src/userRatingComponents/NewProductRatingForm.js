@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import {updateRatingToState} from '../Redux/actions'
+import {updateRatingToState,saveUserToState} from '../Redux/actions'
 import { Rating} from 'semantic-ui-react'
 
 class NewProductRatingForm extends Component {
-
+  //local component state
   state = {
     // snack_id: 0,
     product_id:0,
@@ -13,6 +13,7 @@ class NewProductRatingForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    //once set, send the new state to database
     console.log(this.state)
     if (this.state.product_id > 0 && this.state.rating >0) {
 
@@ -24,24 +25,31 @@ class NewProductRatingForm extends Component {
           "Authorization": `bearer ${this.props.token}`
         }
       })
-      .then(r => r.json())
+      .then(res => res.json())
       .then((review) => {
         console.log(review)
-        this.props.updateRatingToState(review)
+        this.props.saveUserToState(review)
       })
 
-
+      // fetch(`http://localhost:3000/users/${this.props.user.id}`)
+      //   .then(res => res.json())
+      //   .then((resp) => {
+      //       this.props.saveUserToState(resp)
+      //   })
+      this.setState((prevState) => {
+        
+        
+      })
     }
-
   }
 
+  //set local component state
   handleChange = (e) => {
     let {name, value} = e.target
     this.setState({
       [name]: value
     }
     ,()=>console.log(this.state)
-
     )
   }
 
@@ -75,9 +83,6 @@ class NewProductRatingForm extends Component {
 
 }
 
-
-
-
 const mapStateToProps = (state) => {
   return {
     products: state.products.products,
@@ -91,4 +96,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps, {updateRatingToState} )(NewProductRatingForm);
+export default connect(mapStateToProps, {updateRatingToState,saveUserToState} )(NewProductRatingForm);

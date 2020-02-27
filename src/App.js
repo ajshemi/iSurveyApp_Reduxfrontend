@@ -7,6 +7,7 @@ import Form from './components/Form'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import ProductContainer from './components/ProductContainer'
+import AllCommentsContainer from './components/AllCommentsContainer'
 
 import UserRatingContainer from './userRatingComponents/UserRatingContainer'
 
@@ -57,7 +58,6 @@ class App extends React.Component {
           localStorage.setItem("token", resp.token)
         }
       })
-
   }
 
   handleRegisterSubmit = (user) => {
@@ -109,6 +109,8 @@ class App extends React.Component {
           <Route path="/register" render={ this.renderForm } />
           <Route path="/products" component={ ProductContainer } />
           <Route path="/rating" component={ UserRatingContainer } />
+          {/* <Route path="/logout" render={ this.renderLogout } /> */}
+          <Route path="/allcomments" component={ AllCommentsContainer } /> 
           <Route path="/" exact render={() => <Home /> } />
           <Route render={ () => <p>Page not Found</p> } />
         </Switch>
@@ -117,5 +119,10 @@ class App extends React.Component {
   }
 
 }
+// const mapStateToProps=(state) => {
+//   return{
+//     user:state.user
+//   }
+// }
 
 export default connect(null, {addProductsToState, saveUserToState})(withRouter(App));

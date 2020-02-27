@@ -4,6 +4,12 @@ export const saveUserToState = (user) => {
       user
     }
   }
+
+ export const clearUserFromState = () => {
+    return {
+      type: "CLEAR_USER_FROM_STATE"
+  }
+}
   
   
   export const addProductsToState = (products) => {

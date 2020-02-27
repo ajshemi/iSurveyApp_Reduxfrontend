@@ -6,6 +6,10 @@ const initialState = {
   
       case "ADD_PRODUCTS":
         return {...state, products: action.products}
+
+      case "ClEAR_USER_FROM_STATE":
+        // let clearState=initialState
+        return initialState
   
       default:
         return state;
