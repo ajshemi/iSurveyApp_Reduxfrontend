@@ -5,11 +5,12 @@ const initialState = {
     switch (action.type) {
   
       case "ADD_PRODUCTS":
+        console.log('add products to state when page loads')
         return {...state, products: action.products}
 
-      case "ClEAR_USER_FROM_STATE":
-        // let clearState=initialState
-        return initialState
+      case "CLEAR_PRODUCTS_FROM_STATE":
+        console.log('remove products from state')
+        return {}
   
       default:
         return state;

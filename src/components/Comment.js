@@ -33,7 +33,8 @@ class Comment extends Component {
         return (
             <li>
                 <h2>{this.props.comment.user_comment}</h2>
-                <button onClick={this.handleDelete}>X</button>
+                <button onClick={this.handleDelete}>Delete</button>
+                {/* <button onClick={this.handleUpdate}>Update</button> */}
             </li>
         );
     }

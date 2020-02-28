@@ -8,7 +8,6 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import ProductContainer from './components/ProductContainer'
 import AllCommentsContainer from './components/AllCommentsContainer'
-
 import UserRatingContainer from './userRatingComponents/UserRatingContainer'
 
 
@@ -75,21 +74,9 @@ class App extends React.Component {
       if (resp.token) {
         console.log(resp)
         this.props.saveUserToState(resp);
-        // localStorage.setItem("token", data.token)
-        // this.setState({
-        //   user: data.user,
-        //   token: data.token
-        // }, () => {
-        //   this.props.history.push("/profile")
-        // })
       }
     })
   }
-
-  // handleRegisterSubmit = (user) => {
-  //   console.log(user)
-  // }
-
   renderForm = (routerProps) => {
     if(routerProps.location.pathname === "/login"){
       return <Form formName="Login Form" handleSubmit={this.handleLoginSubmit}/>

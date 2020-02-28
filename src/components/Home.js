@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {clearUserFromState} from '../Redux/actions'
+import {clearUserFromState,clearProductsFromState } from '../Redux/actions'
 
 class Home extends Component  {
   handleLogout=(props) => {
-    this.props.clearUserFromState()
     localStorage.clear()
+    this.props.clearUserFromState()
+    this.props.clearProductsFromState() 
   }
   render(){
   return (
@@ -19,4 +20,4 @@ class Home extends Component  {
 };
 }
 
-export default connect(null,{clearUserFromState})(Home);
+export default connect(null,{clearUserFromState,clearProductsFromState})(Home);

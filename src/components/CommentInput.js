@@ -31,6 +31,11 @@ class CommentInput extends Component {
       })
     // dispatch add comment action with the comment response from the database
     // the reducer will update the application state with this action
+    //clear this.state.comment
+    this.setState((prevState) => {
+      return { ...prevState,user_comment:''}
+      
+    })
   }
 
   handleChange = (e) => {

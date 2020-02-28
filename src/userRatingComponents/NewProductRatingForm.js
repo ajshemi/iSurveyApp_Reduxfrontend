@@ -10,7 +10,6 @@ class NewProductRatingForm extends Component {
     product_id:0,
     rating:0
   }
-
   handleSubmit = (e) => {
     e.preventDefault()
     //once set, send the new state to database
@@ -29,17 +28,10 @@ class NewProductRatingForm extends Component {
       .then((review) => {
         console.log(review)
         this.props.saveUserToState(review)
-      })
-
-      // fetch(`http://localhost:3000/users/${this.props.user.id}`)
-      //   .then(res => res.json())
-      //   .then((resp) => {
-      //       this.props.saveUserToState(resp)
-      //   })
-      this.setState((prevState) => {
-        
-        
-      })
+      }
+      )
+      //set local component state to previous/initial state
+      this.setState((prevState) => {return {...prevState,product_id:0,rating:0}})
     }
   }
 
@@ -76,7 +68,7 @@ class NewProductRatingForm extends Component {
             <br />
             <Rating rating={this.state.rating} maxRating={5} />
         </div>
-        <input type="submit" value="Add Product/Rating" />
+        <input type="submit" value="Add New Product Rating" />
       </form>
     );
   }

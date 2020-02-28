@@ -6,6 +6,7 @@ export const saveUserToState = (user) => {
   }
 
  export const clearUserFromState = () => {
+   console.log('here')
     return {
       type: "CLEAR_USER_FROM_STATE"
   }
@@ -18,6 +19,14 @@ export const saveUserToState = (user) => {
       products
     }
   }
+
+  export const clearProductsFromState = () => {
+    console.log('here products')
+     return {
+       type: "CLEAR_PRODUCTS_FROM_STATE"
+   }
+ }
+  
 
 
   export const addCommentToState = (comment) => {

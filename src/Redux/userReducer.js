@@ -9,9 +9,12 @@ const userReducer = (state = initialState, action) => {
         return {...state, user: action.user.user, token: action.user.token}
 
 
-      case "ClEAR_USER_FROM_STATE":
+      case "CLEAR_USER_FROM_STATE":
+        console.log("logout")
         // let clearState=initialState
-        return initialState
+        // return initialState
+        return {}
+        
 
   
       case "ADD_COMMENT":
