@@ -36,6 +36,13 @@ export const saveUserToState = (user) => {
     }
   }
 
+  export const addAllCommentsToState = (comments) => {
+    return {
+      type: "ADD_ALL_COMMENTS",
+      comments
+    }
+  }
+
   export const deleteCommentFromState=(comment) => {
     return {
       type:"DELETE_COMMENT",

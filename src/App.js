@@ -11,8 +11,9 @@ import AllCommentsContainer from './components/AllCommentsContainer'
 import UserRatingContainer from './userRatingComponents/UserRatingContainer'
 
 
+
 import {connect} from 'react-redux'
-import {addProductsToState,saveUserToState} from './Redux/actions'
+import {addProductsToState,saveUserToState,addAllCommentsToState} from './Redux/actions'
 
 
 
@@ -23,7 +24,15 @@ class App extends React.Component {
     .then(r => r.json())
     .then((products) => {
       this.props.addProductsToState(products);
+    })   
+    
+  
+    fetch("http://localhost:3000/comments")
+    .then(r => r.json())
+    .then((allcomments) => {
+      this.props.addAllCommentsToState(allcomments) 
     })
+
 
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem('token')
@@ -39,6 +48,8 @@ class App extends React.Component {
         }
       })
     }
+
+
   }
 
   handleLoginSubmit = (user) => {
@@ -112,4 +123,4 @@ class App extends React.Component {
 //   }
 // }
 
-export default connect(null, {addProductsToState, saveUserToState})(withRouter(App));
+export default connect(null, {addProductsToState, saveUserToState,addAllCommentsToState})(withRouter(App));

@@ -1,6 +1,5 @@
 const initialState = {user: {user_ratings:[],comments:[],token:''}}
 
-
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
   
