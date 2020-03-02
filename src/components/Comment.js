@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
+import {GoTrashcan} from 'react-icons/go'
 import {deleteCommentFromState} from '../Redux/actions'
 
 class Comment extends Component {
@@ -33,7 +34,7 @@ class Comment extends Component {
         return (
             <li>
                 <h2>{this.props.comment.user_comment}</h2>
-                <button onClick={this.handleDelete}>Delete</button>
+                <button onClick={this.handleDelete}><GoTrashcan/></button>
                 {/* <button onClick={this.handleUpdate}>Update</button> */}
             </li>
         );

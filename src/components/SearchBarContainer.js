@@ -9,11 +9,11 @@ import Search from './Search'
 const SearchBarContainer = (props) => {
   return (
     <div>
-      <Filter /*handleFilter={props.handleFilter}*//>
+      <Filter currentUser={props.currentUser} handleFilter={props.handleFilter}/>
       <br/>
       <span><Sort handleSort={props.handleSort}/></span>
       <br/>
-      <Search handleInput={props.handleInput} searchTerm={props.searchTerm}/*handleSearch={props.handleSearch}*//>
+      <Search searchTerm={props.searchTerm} handleInput={props.handleInput}/*handleSearch={props.handleSearch}*//>
       <br/>
     </div>
   );

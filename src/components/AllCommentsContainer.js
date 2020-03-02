@@ -10,15 +10,16 @@ import {addAllCommentsToState} from '../Redux/actions'
 class AllCommentsContainer extends Component {
     state = {
         searchTerm: "",
-        sortValue:"All"
+        sortValue:"All",
+        currentUser:""
     }
 
     handleInput=(e) => {
-        console.log(e)
+        // console.log(e)
         this.setState((prevState) => {return {...prevState, searchTerm:e}})
     }
     handleSort = (newSortValue) => {
-        console.log(newSortValue)
+        // console.log(newSortValue)
         this.setState({
           sortValue: newSortValue
         })
@@ -28,17 +29,17 @@ class AllCommentsContainer extends Component {
         let {sortValue} = this.state
     
         if(sortValue === "Name"){
-          return [...this.props.comments].sort((hogA, hogB) => {
-            return hogA.user_comment.user_id.localeCompare(hogB.user_comment.user_id)
+          return [...this.props.comments].sort((comment1, comment2) => {
+            return comment1.user_comment.user_id.localeCompare(comment2.user_comment.user_id)
           }
           )
         } else if (sortValue === "length"){
-          return [...this.props.comments].sort((hogA, hogB) => {
-            return hogA.user_comment.length - hogB.user_comment.length
+          return [...this.props.comments].sort((comment1, comment2) => {
+            return comment1.user_comment.length - comment2.user_comment.length
           })
         }else if(sortValue==="user"){
-            return [...this.props.comments].sort((hogA, hogB) => {
-                return hogA.user_comment.user_id - hogB.user_comment.user_id
+            return [...this.props.comments].sort((comment1, comment2) => {
+                return comment1.user_comment.user_id - comment2.user_comment.user_id
         })
 
         }
@@ -47,12 +48,33 @@ class AllCommentsContainer extends Component {
         }
     }
 
+    handleFilter=(e) => {
+      console.log(e)
+      this.setState((prevState) => {
+        return{...prevState, currentUser:e}
+      })
+    }
+
     
     //decide what to pass down to CommentCollection
     filteredComments= (comments) => {
         let filteredComments = comments.filter(comment => comment.user_comment.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
         return filteredComments
     }
+
+    currentUserComments=(comments) => {
+      let {currentUser} = this.state
+      console.log(currentUser)
+      if(currentUser==="currentUser"){
+        let filteredComments = comments.filter(comment => comment.user_id===this.props.user.id)
+        return filteredComments
+      }
+      // else if (currentUser==="allUsers"){
+        else {return comments}
+      // }
+      // this.setState({currentUser:""})
+    }
+    
     
 
     render() {
@@ -61,11 +83,14 @@ class AllCommentsContainer extends Component {
         // console.log(this.props.user.comment.id)
         // const {id,user_comment}=this.props.user.comment
         // {user_comment}
+        // console.log(this.props.user)
+        console.log(this.currentUserComments(this.props.comments))
+
         return (
             <Container>
-                <SearchBarContainer searchTerm={this.state.searchTerm} handleInput={this.handleInput} handleSort={this.handleSort}/>
+                <SearchBarContainer currentUser={this.state.currentUser} searchTerm={this.state.searchTerm} handleFilter={this.handleFilter} handleInput={this.handleInput} handleSort={this.handleSort}/>
                 <br/>
-                <CommentCollection comments={this.filteredComments(this.sortComments())}/>
+                <CommentCollection comments={this.filteredComments(this.currentUserComments(this.sortComments()))}/>
             </Container>
         );
     }
@@ -73,7 +98,8 @@ class AllCommentsContainer extends Component {
 
 const mapStateToProps=(state) => {
     return{
-        comments:state.comments.allcomments
+        comments:state.comments.allcomments,
+        user:state.user.user
     }
 }
 

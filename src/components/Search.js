@@ -12,7 +12,7 @@ class Search extends Component {
             <div className="ui search">
                 <strong>Search:</strong>
             <div className="ui icon input">
-                <input className="prompt" value={null} onChange={this.handleChange} />
+                <input className="prompt" value={this.props.searchTerm} onChange={this.handleChange} />
                 <i className="search icon" />
             </div>
             </div>

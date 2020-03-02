@@ -1,18 +1,21 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
+import {connect} from 'react-redux'
+import userReducer from '../Redux/userReducer';
 
-const NavBar = () => {
+const NavBar = (props) => {
   return(
     <ul className="nav">
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
+   { !props.user?  <li>
         <NavLink to="/login">Login</NavLink>
-      </li>
-      <li>
+      </li> : ""}
+      { !props.user ? <li>
         <NavLink to="/register">Register</NavLink>
-      </li>
+      </li> : ""
+      }
       <li>
         <NavLink to="/products">Products</NavLink>
       </li>
@@ -25,5 +28,9 @@ const NavBar = () => {
     </ul>
   )
 };
-
-export default NavBar;
+const mapStateToProps =(state) => {
+  return {
+    user:state.user.user
+  }
+}
+export default connect(mapStateToProps)(NavBar);

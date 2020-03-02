@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import { Modal,Button,Card,Image } from 'semantic-ui-react'
+import {GoTrashcan} from 'react-icons/go'
+import {FaEdit} from 'react-icons/fa'
 import PopupForm from './PopupForm'
-import { render } from '@testing-library/react';
+// import { render } from 'react';
 // import ReviewContainer from './ReviewContainer'
 // import ReviewInput from './ReviewInput'
 
@@ -14,8 +16,18 @@ class Product extends Component {
       open: false
     }
 
+    //when the FaEdit button is clicked this.state.open is set to true
     show = () => this.setState({ open: true })
-    close = () => this.setState({ open: false })
+
+    //onSubmit in the PopupForm.js calls the handleSubmit function
+    //the handleSubmit updates the database and dispatches an action to update app state
+    //and last but not least we pass in 'false' to the handleClose function as an argument
+    //handleClose sets this.state.open to 'false'
+    handleClose=(arg) => {
+      this.setState({open:arg})
+    }
+
+    // close = () => this.setState({ open: false })
     // console.log(this.props)
     
     handleDeleteClick=(e) => {
@@ -39,8 +51,8 @@ class Product extends Component {
     //   // console.log(props.product)
     // }
   render(){
-    let arrayOfIngredients=this.props.product.ingredients.map((ingredient,i)=> <li key={`${i}|${ingredient}`}>{ingredient}</li> )
 
+    let arrayOfIngredients=this.props.product.ingredients.map((ingredient,i)=> <li key={`${i}|${ingredient}`}>{ingredient}</li> )
 
   return(
     <div>
@@ -54,21 +66,21 @@ class Product extends Component {
             </Card.Description>
             <h2>{this.props.user ? `Your Rating is ${this.props.product.rating}` : ''}</h2>
             <div>
-            {this.props.user ? <Button onClick={this.show/*handleUpdateClick*/} className="ui button blue">Update</Button> : ''}
-            {this.props.user ? <button onClick={this.handleDeleteClick} className="ui button red">Delete</button> : ''}
+            {this.props.user ? <Button onClick={this.show/*handleUpdateClick*/} className="ui button blue"><FaEdit/></Button> : ''}
+            {this.props.user ? <button onClick={this.handleDeleteClick} className="ui button red"><GoTrashcan/></button> : ''}
             {/* <button class="ui secondary button">Secondary</button> */}
             </div>
         </Card.Content>
         {/* <button onClick={handleDeleteClick} className="ui button red">Delete</button> */}
 
     </Card> 
-    <Modal size='mini' open={this.state.open} onClose={this.close}>
+    <Modal size='mini' open={this.state.open} onClose={this.handleClose}>
           <Modal.Header>Update Your Rating</Modal.Header>
           <Modal.Content>
             <p>Go head Adjust your rating for this product</p>
           </Modal.Content>
           <Modal.Actions>
-            <PopupForm product={this.props.product}/>
+            <PopupForm product={this.props.product} handleClose={this.handleClose}/>
             {/* <Button negative>No</Button>
             <Button
               positive
@@ -87,44 +99,3 @@ class Product extends Component {
 
 export default Product
 
-
-
-
-
-// import React, { Component } from 'react'
-// import { Button, Modal } from 'semantic-ui-react'
-
-// class ModalExampleSize extends Component {
-//   state = { open: false }
-
-//   show = (size) => () => this.setState({ size, open: true })
-//   close = () => this.setState({ open: false })
-
-//   render() {
-//     const { open, size } = this.state
-
-//     return (
-//       <div>
-//         <Button onClick={this.show('mini')}>Mini</Button>
-
-//         <Modal size={size} open={open} onClose={this.close}>
-//           <Modal.Header>Delete Your Account</Modal.Header>
-//           <Modal.Content>
-//             <p>Are you sure you want to delete your account</p>
-//           </Modal.Content>
-//           <Modal.Actions>
-//             <Button negative>No</Button>
-//             <Button
-//               positive
-//               icon='checkmark'
-//               labelPosition='right'
-//               content='Yes'
-//             />
-//           </Modal.Actions>
-//         </Modal>
-//       </div>
-//     )
-//   }
-// }
-
-// export default ModalExampleSize

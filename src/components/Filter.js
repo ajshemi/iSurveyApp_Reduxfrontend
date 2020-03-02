@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 class Filter extends Component {
-    render() { 
+    handleChange=(e) => {
+        console.log(e.target.value)
+        this.props.handleFilter(e.target.value)
+    }
+    render() {  
         return (
       <div>
             <strong>Filter by:</strong>
             <label>
-                <input type="radio" value="Alphabetically" checked={null} onChange={null}/>
-                Alphabetically
+                <input type="radio" value="currentUser" checked={"currentUser"===this.props.currentUser} onChange={this.handleChange}/>
+                currentUser
             </label>
             <label>
-                <input type="radio" value="CharacterCount" checked={null} onChange={null}/>
-                CharacterCount
+                <input type="radio" value="allUsers" checked={"allUsers"===this.props.currentUser} onChange={this.handleChange}/>
+                allUsers
             </label>
       </div>
         );

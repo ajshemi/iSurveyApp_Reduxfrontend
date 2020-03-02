@@ -36,6 +36,7 @@ class PopupForm extends Component {
         this.props.saveUserToState(review)
       }
       )
+      this.props.handleClose(false)
     }
   }
   
