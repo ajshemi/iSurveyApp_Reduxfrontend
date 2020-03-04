@@ -10,13 +10,17 @@ import thunk from 'redux-thunk'
 import productReducer from './Redux/productReducer'
 import userReducer from './Redux/userReducer'
 import commentReducer from './Redux/commentReducer';
+import sentimentReducer from './Redux/sentimentReducer';
+import emotionReducer from './Redux/emotionReducer';
 import 'semantic-ui-css/semantic.min.css'
 
 const rootReducer = combineReducers(
     {
         products: productReducer,
         user:userReducer,
-        comments:commentReducer
+        comments:commentReducer,
+        sentiments:sentimentReducer,
+        emotions:emotionReducer
     }
 )
 

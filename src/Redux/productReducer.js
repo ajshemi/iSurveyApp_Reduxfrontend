@@ -9,7 +9,7 @@ const initialState = {
         return {...state, products: action.products}
 
       case "CLEAR_PRODUCTS_FROM_STATE":
-        console.log('remove products from state')
+        // console.log('remove products from state')
         return {}
   
       default:

@@ -9,28 +9,38 @@ const NavBar = (props) => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-   { !props.user?  <li>
+    { !props.token?  <li>
         <NavLink to="/login">Login</NavLink>
       </li> : ""}
-      { !props.user ? <li>
+      { !props.token ? <li>
         <NavLink to="/register">Register</NavLink>
       </li> : ""
       }
       <li>
         <NavLink to="/products">Products</NavLink>
       </li>
-      <li>
+        {props.token ?  <li>
         <NavLink to="/rating">UserRating</NavLink>
-      </li>
+      </li> : ""}
       <li>
         <NavLink to="/allcomments">AllComments</NavLink>
+      </li>
+      {/* <li>
+        <NavLink to="/usersentiment">UserSentiment</NavLink>
+      </li> */}
+      {/* <li>
+        <NavLink to="/useremotions">UserEmotions</NavLink>
+      </li> */}
+      <li>
+        <NavLink to="/charts">Charts</NavLink>
       </li>
     </ul>
   )
 };
 const mapStateToProps =(state) => {
   return {
-    user:state.user.user
+    user:state.user.user,
+    token:state.user.token
   }
 }
 export default connect(mapStateToProps)(NavBar);

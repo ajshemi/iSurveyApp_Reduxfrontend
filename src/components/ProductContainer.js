@@ -7,7 +7,7 @@ import { Card } from 'semantic-ui-react'
 class ProductContainer extends React.Component {
 
   render() {
-    let arrayOfProducts = this.props.products.map(product => <Product key={product.id} product={product}/>)
+    let arrayOfProducts = this.props?.products?.map(product => <Product key={product.id} product={product}/>)
     return (
       <Card.Group itemsPerRow={3}>
         { arrayOfProducts }

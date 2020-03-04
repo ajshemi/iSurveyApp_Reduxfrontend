@@ -5,24 +5,30 @@ import {withRouter} from 'react-router-dom'
 
 import Form from './components/Form'
 import NavBar from './components/NavBar'
+import Header from './components/Header'
 import Home from './components/Home'
 import ProductContainer from './components/ProductContainer'
 import AllCommentsContainer from './components/AllCommentsContainer'
 import UserRatingContainer from './userRatingComponents/UserRatingContainer'
-
+import WatsonSentimentContainer from './watsoncomponents/WatsonSentimentContainer' 
+import WatsonEmotionContainer from './watsoncomponents/WatsonEmotionContainer'
+import ChartsContainer from './components/ChartsContainer'   
+import PageNotFound from './components/PageNotFound' 
 
 
 import {connect} from 'react-redux'
-import {addProductsToState,saveUserToState,addAllCommentsToState} from './Redux/actions'
+import {addProductsToState,saveUserToState,addAllCommentsToState,addAllSentimentsToState,addAllEmotionsToState} from './Redux/actions'
 
 
 
 class App extends React.Component {
 
   componentDidMount() {
+    //render products and comments when app loads
     fetch("http://localhost:3000/products")
     .then(r => r.json())
     .then((products) => {
+      console.log(products)
       this.props.addProductsToState(products);
     })   
     
@@ -33,7 +39,19 @@ class App extends React.Component {
       this.props.addAllCommentsToState(allcomments) 
     })
 
+    fetch("http://localhost:3000/watson_sentiments")
+    .then(r => r.json())
+    .then((allsentiments) => {
+      this.props.addAllSentimentsToState(allsentiments) 
+    })
 
+    fetch("http://localhost:3000/watson_emotions")
+    .then(r => r.json())
+    .then((allemotions) => {
+      this.props.addAllEmotionsToState(allemotions) 
+    })
+
+    //persist when token exist
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem('token')
       fetch("http://localhost:3000/persist", {
@@ -53,7 +71,7 @@ class App extends React.Component {
   }
 
   handleLoginSubmit = (user) => {
-
+    //login with username and password
     fetch("http://localhost:3000/login", {
       method: "POST",
       body: JSON.stringify(user),
@@ -66,11 +84,13 @@ class App extends React.Component {
         if (resp.token) {
           this.props.saveUserToState(resp);
           localStorage.setItem("token", resp.token)
+          this.props.history.push("/products")
         }
       })
   }
 
   handleRegisterSubmit = (user) => {
+    //
     fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
@@ -83,8 +103,10 @@ class App extends React.Component {
     .then(r => r.json())
     .then(resp=> {
       if (resp.token) {
-        console.log(resp)
+        // console.log(resp)
         this.props.saveUserToState(resp);
+        localStorage.setItem("token", resp.token)
+        this.props.history.push("/products")
       }
     })
   }
@@ -101,6 +123,7 @@ class App extends React.Component {
     console.log(this.props);
     return (
       <div className="App">
+        <Header/>
         <NavBar/>
         <Switch>
           <Route path="/login" render={ this.renderForm } />
@@ -109,8 +132,11 @@ class App extends React.Component {
           <Route path="/rating" component={ UserRatingContainer } />
           {/* <Route path="/logout" render={ this.renderLogout } /> */}
           <Route path="/allcomments" component={ AllCommentsContainer } /> 
+          {/* <Route path="/usersentiment" component={WatsonSentimentContainer}/> */}
+          {/* <Route path="/useremotions" component={WatsonEmotionContainer}/>  */}
+          <Route path="/charts" component={ChartsContainer}/> 
           <Route path="/" exact render={() => <Home /> } />
-          <Route render={ () => <p>Page not Found</p> } />
+          <Route render={ () => <PageNotFound/> } />
         </Switch>
       </div>
     );
@@ -123,4 +149,4 @@ class App extends React.Component {
 //   }
 // }
 
-export default connect(null, {addProductsToState, saveUserToState,addAllCommentsToState})(withRouter(App));
+export default connect(null, {addProductsToState, saveUserToState,addAllCommentsToState,addAllSentimentsToState,addAllEmotionsToState})(withRouter(App));

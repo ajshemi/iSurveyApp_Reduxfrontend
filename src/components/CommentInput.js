@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import {addCommentToState} from '../Redux/actions'
+import {addEmotionToState,addSentimentToState,addCommentToState,addToAllCommentsToState} from '../Redux/actions'
 
 class CommentInput extends Component {
   //local component state
@@ -27,7 +27,10 @@ class CommentInput extends Component {
       .then(res => res.json())
       .then((comment) => {
         console.log(comment)
-        this.props.addCommentToState(comment)
+        this.props.addCommentToState(comment.comment);
+        this.props.addToAllCommentsToState(comment.comment);
+        this.props.addEmotionToState(comment.emotion);
+        this.props.addSentimentToState(comment.sentiment);
       })
     // dispatch add comment action with the comment response from the database
     // the reducer will update the application state with this action
@@ -58,4 +61,4 @@ class CommentInput extends Component {
   }
 }
 
-export default connect(null,{addCommentToState})(CommentInput);
+export default connect(null,{addEmotionToState,addSentimentToState,addCommentToState,addToAllCommentsToState})(CommentInput);

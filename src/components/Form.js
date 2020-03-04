@@ -24,33 +24,36 @@ class Form extends Component {
     let {username, password} = this.state
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} class="ui form">
         <h1>{formName}</h1>
-        <label htmlFor="username">Username:</label>
-        <input type="text" autoComplete="off" name="username" value={username} onChange={this.handleChange}/>
-        <label htmlFor="password">Password:</label>
-        <input type="password" autoComplete="off" name="password" value={password} onChange={this.handleChange}/>
-        <input type="submit" value="Submit"/>
+        <div className="equal width fields">
+          <div className="field">
+            <label>Username</label>
+            <div className="ui fluid input"><input name="username" type="text" placeholder="Username" value={username} onChange={this.handleChange} /></div>
+          </div>
+          <div className="field">
+            <label>Password</label>
+            <div className="ui fluid input"><input name="password" type="password" placeholder="Password" value={password} onChange={this.handleChange} /></div>
+          </div>
+        </div>
+        <div className="field"><button class="ui button">Submit</button></div>
       </form>
-
-
-
-
     );
   }
 
 }
 
-// <form class="ui form">
-//   <div class="field">
-//     <label>Username</label>
-//     <input placeholder="Username" />
-//   </div>
-//   <div class="field">
-//     <label>Password</label>
-//     <input placeholder="Password" />
-//   </div>
-//   <button type="submit" class="ui button">Submit</button>
-// </form>
 
 export default Form;
+
+
+
+
+  //   <form onSubmit={this.handleSubmit}>
+  //   <h1>{formName}</h1>
+  //   <label htmlFor="username">Username:</label>
+  //   <input type="text" autoComplete="off" name="username" value={username} onChange={this.handleChange}/>
+  //   <label htmlFor="password">Password:</label>
+  //   <input type="password" autoComplete="off" name="password" value={password} onChange={this.handleChange}/>
+  //   <input type="submit" value="Submit"/>
+  // </form>

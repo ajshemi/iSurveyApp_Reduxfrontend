@@ -5,9 +5,124 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #BEBEBE;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* apply on app component  */
+.App {
+  text-align: center;
+}
+
+/* id is most specific */
+#header {
+  background: red;
+  /* background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); */
+  /* background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); */
+  /* background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); */
+  /* background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); */
+  /* -webkit-background-clip: text; */
+  -webkit-text-fill-color: transparent;
+  font-size: 5rem;
+  border:2px solid blue;
+  font-style: italic;
+}
+/* form */
+form {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+label {
+  font-size: 1.5rem;
+}
+
+input, label {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+input[type="submit"]{
+  width: 10rem;
+  margin-top: 2rem;
+  height: 1.5rem;
+}
+
+ol {
+  width: 50%;
+  margin: auto;
+
+}
+
+ol li {
+  width: 20%;
+  margin: auto;
+
+}
+/* classname used in navbar */
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: cadetblue;
+  /* background-color: #333; */
+}
+
+ul.nav li {
+  float: left;
+}
+
+ul.nav li a {
+  display: block;
+  color: rgb(189, 56, 56);
+  text-align: right;
+  /* text-align: center; */
+  padding: 14px 16px;
+  text-decoration: underline;
+}
+
+ul.nav li a:hover {
+  background-color: #111;
+}
+
+.allsearch{
+  display: inline-flex;
+  border:2px solid blue;
+ }
+
+.filtersearch{
+  display:inline-table;
+  width:10%;
+  margin-left:5%
+}
+.sortsearch{
+  display: inline-table;
+  width:10%;
+  margin-left:5%
+}
+.searchsearc{
+  display: inline-table;
+  width:10%;
+  margin-left:5%
+}
+.ratedcookies{
+  padding-left: 10%;
+
+}
+/* .ratingbutton{
+  margin-left: 10%;
+  margin-right:10%;
+} */
+/* .modalrating{
+  margin-left:30%;
+  margin-right:30%;
+} */
+
+

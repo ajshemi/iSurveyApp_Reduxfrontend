@@ -14,7 +14,7 @@ class NewProductRatingForm extends Component {
     e.preventDefault()
     //once set, send the new state to database
     console.log(this.state)
-    if (this.state.product_id > 0 && this.state.rating >0) {
+    if (this.state.product_id > 0 && this.state.rating >0 && this.props?.token) {
 
       fetch("http://localhost:3000/reviews", {
         method: "POST",
@@ -41,22 +41,27 @@ class NewProductRatingForm extends Component {
     this.setState({
       [name]: value
     }
-    ,()=>console.log(this.state)
+    // ,()=>console.log(this.state)
     )
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>Product/Cookie Name:</label>
-        <select name="product_id" onChange={this.handleChange} value={this.state.product_id}>
-          {this.props.products.map(product => {
-            return <option key={product.id} value={product.id}>{product.name}</option>
-          })}
-        </select>
-        
+      <div>
         <div>
-            <div>Rating: {this.state.rating}</div>
+          <br/>
+          <br/>
+          <label>Product/Cookie Name:</label>
+          <select name="product_id" onChange={this.handleChange} value={this.state?.product_id}>
+            {this.props?.products.map(product => {
+              return <option key={product.id} value={product.id}>{product.name}</option>
+            })}
+          </select>
+        </div>
+        <div className="ratingbutton">
+            <div>
+            Rating: {this.state.rating}
+            
             <input
             type='range'
             min={0}
@@ -65,11 +70,15 @@ class NewProductRatingForm extends Component {
             value={this.state.rating}
             onChange={this.handleChange}
             />
-            <br />
-            <Rating rating={this.state.rating} maxRating={5} />
+            {/* </div>
+            <div> */}
+              <Rating rating={this.state.rating} maxRating={5} />
+            </div>
         </div>
-        <input type="submit" value="Add New Product Rating" />
-      </form>
+        <div>
+          <button onClick={this.handleSubmit} type="submit" >Add New Product Rating</button>
+      </div>
+     </div>
     );
   }
 

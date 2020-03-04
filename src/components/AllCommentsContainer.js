@@ -17,6 +17,7 @@ class AllCommentsContainer extends Component {
     handleInput=(e) => {
         // console.log(e)
         this.setState((prevState) => {return {...prevState, searchTerm:e}})
+        //dispatch some action to app state if using redux
     }
     handleSort = (newSortValue) => {
         // console.log(newSortValue)
@@ -87,11 +88,14 @@ class AllCommentsContainer extends Component {
         console.log(this.currentUserComments(this.props.comments))
 
         return (
-            <Container>
+            <div>
+              <div>
                 <SearchBarContainer currentUser={this.state.currentUser} searchTerm={this.state.searchTerm} handleFilter={this.handleFilter} handleInput={this.handleInput} handleSort={this.handleSort}/>
-                <br/>
+              </div>
+              <div>
                 <CommentCollection comments={this.filteredComments(this.currentUserComments(this.sortComments()))}/>
-            </Container>
+              </div>
+            </div>
         );
     }
 }

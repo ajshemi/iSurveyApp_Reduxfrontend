@@ -55,7 +55,8 @@ class Product extends Component {
     let arrayOfIngredients=this.props.product.ingredients.map((ingredient,i)=> <li key={`${i}|${ingredient}`}>{ingredient}</li> )
 
   return(
-    <div>
+    <>
+    <div className="ratedcookies">
     <Card>
         {/* <Image src='/cookie-imgs/banana-oatmeal-raisin-cookies-9996 copy 2.jpg'  wrapped ui={false} /> */}
         <Card.Content>
@@ -74,25 +75,20 @@ class Product extends Component {
         {/* <button onClick={handleDeleteClick} className="ui button red">Delete</button> */}
 
     </Card> 
-    <Modal size='mini' open={this.state.open} onClose={this.handleClose}>
-          <Modal.Header>Update Your Rating</Modal.Header>
-          <Modal.Content>
-            <p>Go head Adjust your rating for this product</p>
-          </Modal.Content>
-          <Modal.Actions>
-            <PopupForm product={this.props.product} handleClose={this.handleClose}/>
-            {/* <Button negative>No</Button>
-            <Button
-              positive
-              icon='checkmark'
-              labelPosition='right'
-              content='Yes'
-            /> */}
-          </Modal.Actions>
-        </Modal>  
-    {/* <ReviewContainer/> */}
-    {/* <ReviewInput/> */}
-    </div>
+   </div>
+    <div className="modalrating">
+      <Modal size='mini' open={this.state.open} onClose={this.handleClose}>
+            <Modal.Header>Update Your Rating</Modal.Header>
+            <Modal.Content>
+              <p>Go head Adjust your rating for this product</p>
+            </Modal.Content>
+            <Modal.Actions>
+              <PopupForm product={this.props.product} handleClose={this.handleClose}/>
+            </Modal.Actions>
+      </Modal>  
+     </div>
+     </>
+
   )
 }
 };

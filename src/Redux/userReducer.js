@@ -10,8 +10,6 @@ const userReducer = (state = initialState, action) => {
 
       case "CLEAR_USER_FROM_STATE":
         console.log("logout")
-        // let clearState=initialState
-        // return initialState
         return {}
         
 
