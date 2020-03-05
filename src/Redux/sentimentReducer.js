@@ -6,7 +6,7 @@ const initialState = {
     switch (action.type) {
   
       case "ADD_SENTIMENT":
-        console.log('add sentiment')
+        // console.log('add sentiment')
         // console.log(action.sentiment)
         return {...state, sentiments: state.sentiments.concat(action.sentiment)}
 

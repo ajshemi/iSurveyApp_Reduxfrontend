@@ -9,14 +9,14 @@ const userReducer = (state = initialState, action) => {
 
 
       case "CLEAR_USER_FROM_STATE":
-        console.log("logout")
+        // console.log("logout")
         return {}
         
 
   
       case "ADD_COMMENT":
 
-        console.log(action.comment)
+        // console.log(action.comment)
         // let newComment={user_id: action.comment.user_id, user_comment:action.comment.user_comment}
         return {...state, user:{...state.user, comments:[...state.user.comments,action.comment ]}}
         // return {...state, ...action.payload}

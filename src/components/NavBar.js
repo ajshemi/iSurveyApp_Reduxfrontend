@@ -37,7 +37,7 @@ const NavBar = (props) => {
       {props.token ? <li>
         <NavLink to="/logout">Logout</NavLink>
       </li> :""}
-      {props.token ? <li>
+      {props.token && (props.user.user_ratings.length===3) ? <li>
         <NavLink to="/ratingsummary">RatingSummary</NavLink>
       </li> : ""}
 
@@ -54,3 +54,9 @@ const mapStateToProps =(state) => {
   }
 }
 export default connect(mapStateToProps)(NavBar);
+
+{/* <div class="ui menu">
+  <a class="item">Editorials</a>
+  <a class="item">Reviews</a>
+  <a class="item">Upcoming Events</a>
+</div> */}

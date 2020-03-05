@@ -32,7 +32,7 @@ class PopupForm extends Component {
       })
       .then(res => res.json())
       .then((review) => {
-        console.log(review)
+        // console.log(review)
         this.props.saveUserToState(review)
       }
       )

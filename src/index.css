@@ -14,7 +14,7 @@ code {
 }
 /* apply on app component  */
 .App {
-  text-align: center;
+  text-align:left;
 }
 
 /* id is most specific */
@@ -34,6 +34,9 @@ code {
 form {
   text-align: center;
   margin-top: 3rem;
+}
+.home{
+  text-align: center;
 }
 
 label {
@@ -71,7 +74,7 @@ ul.nav {
   overflow: hidden;
   display: flex;
   justify-content: space-evenly;
-  background-color: cadetblue;
+  background-color: rgb(5, 5, 109);
   /* background-color: #333; */
 }
 
@@ -81,20 +84,31 @@ ul.nav li {
 
 ul.nav li a {
   display: block;
-  color: rgb(189, 56, 56);
+  color: rgb(231, 222, 222);
   text-align: right;
+  /* margin-bottom: 3%; */
   /* text-align: center; */
   padding: 14px 16px;
   text-decoration: underline;
 }
 
 ul.nav li a:hover {
-  background-color: #111;
+  background-color: rgb(82, 55, 233);
 }
 
 .allsearch{
   display: inline-flex;
   border:2px solid blue;
+  text-align: center;
+ }
+
+ .allcommentpage{
+  text-align: center;
+ }
+
+ .allproducts{
+  margin-top: 10%;
+  text-align: center;
  }
 
 .filtersearch{
@@ -113,8 +127,15 @@ ul.nav li a:hover {
   margin-left:5%
 }
 .ratedcookies{
-  padding-left: 10%;
+  padding-left: 3%;
 
+}
+.commentlist{
+  text-align: left;
+}
+
+.addcomment{
+  text-align: center;
 }
 /* .ratingbutton{
   margin-left: 10%;

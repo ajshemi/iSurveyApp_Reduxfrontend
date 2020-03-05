@@ -13,8 +13,8 @@ class UserRatingContainer extends Component {
   //use the review_id to delete the review/rating/user association
   handleDeleteReview=(review_id) => {
     if(this.props?.user){    
-      console.log(this.props.user)
-      console.log(review_id)
+      // console.log(this.props.user)
+      // console.log(review_id)
       fetch(`http://localhost:3000/reviews/${review_id}`, {
         method: "DELETE",
         headers: {
@@ -23,7 +23,7 @@ class UserRatingContainer extends Component {
       })
       .then(res => res.json())
       .then((review) => {
-        console.log(review)
+        // console.log(review)
         this.props.saveUserToState(review)
       }
       )
@@ -39,9 +39,11 @@ class UserRatingContainer extends Component {
         <div className="ratedcards">
           <h2>{user?.username ? `Welcome ${user.username}` : "Please login"}</h2>
           <h3>{`You've Rated ${user.user_ratings.length < 1 ? 'No' : user.user_ratings.length } Product${user.user_ratings.length >1 ? 's':''}`}</h3>
+          
           <Card.Group itemsPerRow={3}>
             {user?.user_ratings?.map(product => <Product handleDeleteReview={this.handleDeleteReview} key={product.review_id} product={product} user={user} />)}
           </Card.Group>
+        
         </div>
         <div className="newrating">
           <NewProductRatingForm user={this.props.user}/>

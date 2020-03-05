@@ -50,7 +50,7 @@ class AllCommentsContainer extends Component {
     }
 
     handleFilter=(e) => {
-      console.log(e)
+      // console.log(e)
       this.setState((prevState) => {
         return{...prevState, currentUser:e}
       })
@@ -65,7 +65,7 @@ class AllCommentsContainer extends Component {
 
     currentUserComments=(comments) => {
       let {currentUser} = this.state
-      console.log(currentUser)
+      // console.log(currentUser)
       if(currentUser==="currentUser"){
         let filteredComments = comments.filter(comment => comment.user_id===this.props.user.id)
         return filteredComments
@@ -85,10 +85,10 @@ class AllCommentsContainer extends Component {
         // const {id,user_comment}=this.props.user.comment
         // {user_comment}
         // console.log(this.props.user)
-        console.log(this.currentUserComments(this.props.comments))
+        // console.log(this.currentUserComments(this.props.comments))
 
         return (
-            <div>
+            <div className="allcommentpage">
               <div>
                 <SearchBarContainer currentUser={this.state.currentUser} searchTerm={this.state.searchTerm} handleFilter={this.handleFilter} handleInput={this.handleInput} handleSort={this.handleSort}/>
               </div>

@@ -70,11 +70,12 @@ export default class Chart extends Component{
             options={{
                 title:{
                 display:this.props.displayTitle,
-                fontSize:25
+                fontSize:50
                 },
                 legend:{
                 display:this.props.displayLegend,
-                position:this.props.legendPosition
+                position:this.props.legendPosition,
+                fontSize:50
                 }
             }}
             />  

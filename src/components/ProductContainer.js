@@ -9,7 +9,7 @@ import { Card } from 'semantic-ui-react'
 class ProductContainer extends React.Component {
   renderProduct=(routerProps) => {
     let matchProduct=parseInt(routerProps.match.params.id)
-    console.log(matchProduct)
+    // console.log(matchProduct)
     let foundProduct=this.props.products.find(product=>product.id===matchProduct)
     if(foundProduct){
       return <Product key={foundProduct.id} product={foundProduct}/> 
@@ -21,16 +21,16 @@ class ProductContainer extends React.Component {
   }
 
   render() {
-    let productlinks=this.props?.products?.map((product,index)=><li key={`${product.id}-${index}`} ><Link to={`/products/${product.id}`}>{product.name}</Link></li>)
-    let arrayOfProducts = this.props?.products?.map(product => <Product key={product.id} product={product}/>)
+    let productlinks=this.props?.products?.map((product,index)=><div role="listitem" className="item" key={`${product.id}-${index}`} ><Link to={`/products/${product.id}`}>{product.name}</Link></div>)
+    // let arrayOfProducts = this.props?.products?.map(product => <Product key={product.id} product={product}/>)
     return (
-      <div>
+      <div className="allproducts">
         {/* <Card.Group itemsPerRow={3}>
           { arrayOfProducts }
         </Card.Group> */}
-        <ol>
+        <div role="list" className="ui list">
           {productlinks}
-        </ol>
+        </div>
         <Switch>
          <Route path="/products/:id" render={this.renderProduct}/>
          <Route path="/products/" render={ () => <p>click on a product</p> } />

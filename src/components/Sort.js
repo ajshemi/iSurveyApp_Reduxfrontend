@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Sort extends Component {
 
     handleChange = (e) => {
-        console.log(e)
+        // console.log(e)
         this.props.handleSort(e.target.value)
     }
     render() {
@@ -17,7 +17,7 @@ export default class Sort extends Component {
                     <option value="All"> All</option>
                     <option value="length">length</option>
                     <option value="user">user</option>
-                    <option value="3">3</option>
+                    {/* <option value="3">3</option> */}
                     </select>
                 </label>
             </div>

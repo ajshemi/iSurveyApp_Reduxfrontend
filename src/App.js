@@ -10,6 +10,7 @@ import Home from './components/Home'
 import ProductContainer from './components/ProductContainer'
 import AllCommentsContainer from './components/AllCommentsContainer'
 import UserRatingContainer from './userRatingComponents/UserRatingContainer'
+// import NewUserRatingContainer from './userRatingComponents/NewUserRatingContainer'
 // import WatsonSentimentContainer from './watsoncomponents/WatsonSentimentContainer' 
 // import WatsonEmotionContainer from './watsoncomponents/WatsonEmotionContainer'
 import AnalysisContainer from './components/AnalysisContainer'
@@ -31,7 +32,7 @@ class App extends React.Component {
     fetch("http://localhost:3000/products")
     .then(r => r.json())
     .then((products) => {
-      console.log(products)
+      // console.log(products)
       this.props.addProductsToState(products);
     })   
     
@@ -124,9 +125,9 @@ class App extends React.Component {
       return <Form formName="Register Form" handleSubmit={this.handleRegisterSubmit}/>
     }
   }
-  refreshPage=() =>{
-    window.location.reload(false);
-  }
+  // refreshPage=() =>{
+  //   window.location.reload(false);
+  // }
   
   handleLogout=(routerProps) => {
     if(routerProps.location.pathname === "/logout"){
@@ -137,14 +138,13 @@ class App extends React.Component {
     // this.props.clearSentimentFromState() 
     // this.props.clearallEmotionsFromState()
    
-    return <Home/>
+    return ( <Home /> )
     }
-    // this.refreshPage()
   }
 
 
   render(){
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div className="App">
         <Header/>
@@ -154,6 +154,8 @@ class App extends React.Component {
           <Route path="/register" render={ this.renderForm } />
           <Route path="/products" component={ ProductContainer } />
           <Route path="/rating" component={ UserRatingContainer } />
+          {/* <Route path="/newrating" component={ NewUserRatingContainer } /> */}
+
           {/* <Route path="/logout" render={ this.renderLogout } /> */}
           <Route path="/allcomments" component={ AllCommentsContainer } /> 
           {/* <Route path="/usersentiment" component={WatsonSentimentContainer}/> */}

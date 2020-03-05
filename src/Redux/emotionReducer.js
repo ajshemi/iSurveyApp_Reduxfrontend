@@ -6,7 +6,7 @@ const initialState = {
     switch (action.type) {
   
       case "ADD_EMOTION":
-        console.log('add EMOTION')
+        // console.log('add EMOTION')
         return {...state, emotions: state.emotions.concat(action.emotion)}
 
       case "ADD_ALL_EMOTIONS":
@@ -18,7 +18,7 @@ const initialState = {
 
 
       case "CLEAR_ALL_EMOTIONS_FROM_STATE":
-        console.log('clear emotion')
+        // console.log('clear emotion')
         return {}
   
       default:

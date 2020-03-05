@@ -30,8 +30,8 @@ class Comment extends Component {
       }
     }
     render() {
-        console.log(this.props.comment.id)
-        console.log(this.props.deletebutton)
+        // console.log(this.props.comment.id)
+        // console.log(this.props.deletebutton)
         // console.log(this.props.user.comment.id)
         // const {id,user_comment}=this.props.user.comment
         // {user_comment}

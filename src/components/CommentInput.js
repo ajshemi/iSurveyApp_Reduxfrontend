@@ -13,8 +13,9 @@ class CommentInput extends Component {
     e.preventDefault()
     // console.log(this.state)
     // console.log(this.props)
+    if(this.state.user_comment.length>15 && !/\d/.test(this.state.user_comment)){
     let token = localStorage.getItem('token')
-    console.log(token)
+    // console.log(token)
     fetch("http://localhost:3000/comments",{
         method: "POST",
         body:JSON.stringify(this.state),
@@ -26,8 +27,8 @@ class CommentInput extends Component {
       })
       .then(res => res.json())
       .then((comment) => {
-        console.log(comment)
-        console.log(comment.comment)
+        // console.log(comment)
+        // console.log(comment.comment)
         this.props.addCommentToState(comment.comment);
         this.props.addToAllCommentsToState(comment.comment);
         this.props.addEmotionToState(comment.emotion);
@@ -40,14 +41,22 @@ class CommentInput extends Component {
       return { ...prevState,user_comment:''}
       
     })
+    }
+    else { alert('comment is too short or invalid'); }
   }
 
   handleChange = (e) => {
     //set this component state "local state"
     let {name, value} = e.target
+
+    // console.log(/\d/.test("yes"));
+    
     this.setState({
       [name]: value
-    },()=>console.log(this.state.user_comment))
+    }
+    // ,()=>console.log(this.state.user_comment)
+    )
+   
   }
 
   render() {

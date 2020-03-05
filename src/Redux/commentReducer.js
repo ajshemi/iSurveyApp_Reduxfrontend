@@ -6,7 +6,7 @@ const initialState = {
     switch (action.type) {
   
       case "ADD_ALL_COMMENTS":
-        console.log('add all comments')
+        // console.log('add all comments')
         return {...state, allcomments: action.comments}
       
       

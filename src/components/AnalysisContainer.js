@@ -5,7 +5,7 @@ import AnalysisList from './AnalysisList'
 class AnalysisContainer extends Component {
 
     render() { 
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <div>
                 <AnalysisList sentiments={this.props.sentiments} emotions={this.props.emotions} comments={this.props.comments}/>
