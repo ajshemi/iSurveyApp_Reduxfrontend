@@ -10,6 +10,7 @@ class NewProductRatingForm extends Component {
     product_id:0,
     rating:0
   }
+  
   handleSubmit = (e) => {
     e.preventDefault()
     //once set, send the new state to database

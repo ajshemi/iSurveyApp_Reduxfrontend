@@ -22,25 +22,35 @@ const NavBar = (props) => {
         {props.token ?  <li>
         <NavLink to="/rating">UserRating</NavLink>
       </li> : ""}
-      <li>
+      {props.token && props.comments.length ? <li>
         <NavLink to="/allcomments">AllComments</NavLink>
-      </li>
+      </li> :""}
       {/* <li>
         <NavLink to="/usersentiment">UserSentiment</NavLink>
       </li> */}
-      {/* <li>
-        <NavLink to="/useremotions">UserEmotions</NavLink>
-      </li> */}
-      <li>
+      {props.token && props.comments.length ? <li>
+        <NavLink to="/analysis">CommentAnalysis</NavLink>
+      </li> : ""}
+      {props.token && props.comments.length ? <li>
         <NavLink to="/charts">Charts</NavLink>
-      </li>
+      </li> :""}
+      {props.token ? <li>
+        <NavLink to="/logout">Logout</NavLink>
+      </li> :""}
+      {props.token ? <li>
+        <NavLink to="/ratingsummary">RatingSummary</NavLink>
+      </li> : ""}
+
+
     </ul>
   )
 };
 const mapStateToProps =(state) => {
   return {
     user:state.user.user,
-    token:state.user.token
+    token:state.user.token,
+    comments:state.comments.allcomments,
+    onerating:state.ratings.onerating
   }
 }
 export default connect(mapStateToProps)(NavBar);

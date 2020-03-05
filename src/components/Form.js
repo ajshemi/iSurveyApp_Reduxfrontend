@@ -24,7 +24,7 @@ class Form extends Component {
     let {username, password} = this.state
 
     return (
-      <form onSubmit={this.handleSubmit} class="ui form">
+      <form onSubmit={this.handleSubmit} className="ui form">
         <h1>{formName}</h1>
         <div className="equal width fields">
           <div className="field">
@@ -36,7 +36,7 @@ class Form extends Component {
             <div className="ui fluid input"><input name="password" type="password" placeholder="Password" value={password} onChange={this.handleChange} /></div>
           </div>
         </div>
-        <div className="field"><button class="ui button">Submit</button></div>
+        <div className="field"><button className="ui button">Submit</button></div>
       </form>
     );
   }

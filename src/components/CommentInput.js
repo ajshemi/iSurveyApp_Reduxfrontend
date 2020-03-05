@@ -27,6 +27,7 @@ class CommentInput extends Component {
       .then(res => res.json())
       .then((comment) => {
         console.log(comment)
+        console.log(comment.comment)
         this.props.addCommentToState(comment.comment);
         this.props.addToAllCommentsToState(comment.comment);
         this.props.addEmotionToState(comment.emotion);

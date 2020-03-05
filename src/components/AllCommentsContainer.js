@@ -93,7 +93,7 @@ class AllCommentsContainer extends Component {
                 <SearchBarContainer currentUser={this.state.currentUser} searchTerm={this.state.searchTerm} handleFilter={this.handleFilter} handleInput={this.handleInput} handleSort={this.handleSort}/>
               </div>
               <div>
-                <CommentCollection comments={this.filteredComments(this.currentUserComments(this.sortComments()))}/>
+                <CommentCollection user={this.props.user} comments={this.filteredComments(this.currentUserComments(this.sortComments()))}/>
               </div>
             </div>
         );

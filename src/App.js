@@ -10,14 +10,17 @@ import Home from './components/Home'
 import ProductContainer from './components/ProductContainer'
 import AllCommentsContainer from './components/AllCommentsContainer'
 import UserRatingContainer from './userRatingComponents/UserRatingContainer'
-import WatsonSentimentContainer from './watsoncomponents/WatsonSentimentContainer' 
-import WatsonEmotionContainer from './watsoncomponents/WatsonEmotionContainer'
+// import WatsonSentimentContainer from './watsoncomponents/WatsonSentimentContainer' 
+// import WatsonEmotionContainer from './watsoncomponents/WatsonEmotionContainer'
+import AnalysisContainer from './components/AnalysisContainer'
+import RatingSummaryContainer from './components/RatingSummaryContainer'
+
 import ChartsContainer from './components/ChartsContainer'   
 import PageNotFound from './components/PageNotFound' 
 
 
 import {connect} from 'react-redux'
-import {addProductsToState,saveUserToState,addAllCommentsToState,addAllSentimentsToState,addAllEmotionsToState} from './Redux/actions'
+import {clearallEmotionsFromState,clearSentimentFromState,clearUserFromState,addProductsToState,saveUserToState,addAllCommentsToState,addAllSentimentsToState,addAllEmotionsToState} from './Redux/actions'
 
 
 
@@ -87,6 +90,9 @@ class App extends React.Component {
           this.props.history.push("/products")
         }
       })
+
+    // this.refreshPage()
+
   }
 
   handleRegisterSubmit = (user) => {
@@ -109,6 +115,7 @@ class App extends React.Component {
         this.props.history.push("/products")
       }
     })
+    // this.refreshPage()
   }
   renderForm = (routerProps) => {
     if(routerProps.location.pathname === "/login"){
@@ -116,6 +123,23 @@ class App extends React.Component {
     } else if (routerProps.location.pathname === "/register") {
       return <Form formName="Register Form" handleSubmit={this.handleRegisterSubmit}/>
     }
+  }
+  refreshPage=() =>{
+    window.location.reload(false);
+  }
+  
+  handleLogout=(routerProps) => {
+    if(routerProps.location.pathname === "/logout"){
+    localStorage.clear()
+    this.props.clearUserFromState()
+    // this.props.clearProductsFromState()
+    // this.props.clearallCommentsFromState()
+    // this.props.clearSentimentFromState() 
+    // this.props.clearallEmotionsFromState()
+   
+    return <Home/>
+    }
+    // this.refreshPage()
   }
 
 
@@ -134,7 +158,10 @@ class App extends React.Component {
           <Route path="/allcomments" component={ AllCommentsContainer } /> 
           {/* <Route path="/usersentiment" component={WatsonSentimentContainer}/> */}
           {/* <Route path="/useremotions" component={WatsonEmotionContainer}/>  */}
-          <Route path="/charts" component={ChartsContainer}/> 
+          <Route path="/charts" component={ChartsContainer}/>
+          <Route path="/analysis" component={AnalysisContainer}/> 
+          <Route path="/ratingsummary" component={RatingSummaryContainer}/> 
+          <Route path='/logout' render={this.handleLogout}/>
           <Route path="/" exact render={() => <Home /> } />
           <Route render={ () => <PageNotFound/> } />
         </Switch>
@@ -149,4 +176,4 @@ class App extends React.Component {
 //   }
 // }
 
-export default connect(null, {addProductsToState, saveUserToState,addAllCommentsToState,addAllSentimentsToState,addAllEmotionsToState})(withRouter(App));
+export default connect(null, {clearallEmotionsFromState,clearSentimentFromState,clearUserFromState,addProductsToState, saveUserToState,addAllCommentsToState,addAllSentimentsToState,addAllEmotionsToState})(withRouter(App));

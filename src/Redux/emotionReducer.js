@@ -12,6 +12,11 @@ const initialState = {
       case "ADD_ALL_EMOTIONS":
         return {...state,emotions:action.emotions}
 
+      case "DELETE_EMOTION_FROM_STATE":
+        let filteredArray=state.emotions.filter(emotion=>emotion.id !== action.emotion.id)
+        return {...state, emotions:filteredArray}
+
+
       case "CLEAR_ALL_EMOTIONS_FROM_STATE":
         console.log('clear emotion')
         return {}

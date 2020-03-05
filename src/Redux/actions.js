@@ -73,6 +73,21 @@ export const addAllSentimentsToState=(sentiments) => {
   
 }
 
+export const deleteSentimentFromState=(sentiment) => {
+  return{
+    type: "DELETE_SENTIMENT_FROM_STATE",
+    sentiment
+  }
+  
+}
+export const deleteEmotionFromState=(emotion) => {
+  return{
+    type: "DELETE_EMOTION_FROM_STATE",
+    emotion
+  }
+  
+}
+
 //COMMENT RELATED ACTIONS
 export const clearallCommentsFromState = () => {
   console.log('here products')
@@ -101,6 +116,12 @@ export const addToAllCommentsToState=(comment) => {
   }
   
 }
+export const deleteCommentFromAllComment=(comment) => {
+  return {
+    type:"DELETE_FROM_ALL_COMMENTS",
+    comment
+  }
+}
   
 
 export const deleteCommentFromState=(comment) => {
@@ -117,3 +138,20 @@ export const updateRatingToState = (review) => {
     review
   }
 }
+
+export const addoneRatingSummary=(onerating) => {
+  return {
+    type:"ADD_ONE_RATING_SUMMARY",
+    onerating
+  }
+  
+}
+
+
+export const addallRatingsSummary=(allratings) => {
+  return {
+    type:"ADD_ALL_RATING_SUMMARY",
+    allratings
+  }
+  
+} 

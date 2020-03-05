@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import {GoTrashcan} from 'react-icons/go'
-import {deleteCommentFromState} from '../Redux/actions'
+import {deleteCommentFromState,deleteCommentFromAllComment,deleteEmotionFromState,deleteSentimentFromState} from '../Redux/actions'
 
 class Comment extends Component {
     //receives props.comment from Comments
@@ -21,24 +21,35 @@ class Comment extends Component {
           .then(r => r.json())
           .then((comment) => {
             // console.log(comment)
-            this.props.deleteCommentFromState(comment)
+            this.props.deleteCommentFromState(comment.comment)
+            this.props.deleteCommentFromAllComment(comment.comment)
+            this.props.deleteEmotionFromState(comment.emotion)
+            this.props.deleteSentimentFromState(comment.sentiment)
           })
           //dispatch delete action with the comment response from the database
       }
     }
     render() {
-        // console.log(this.props.user.comment)
+        console.log(this.props.comment.id)
+        console.log(this.props.deletebutton)
         // console.log(this.props.user.comment.id)
         // const {id,user_comment}=this.props.user.comment
         // {user_comment}
         return (
             <li>
                 <h2>{this.props.comment.user_comment}</h2>
-                <button onClick={this.handleDelete}><GoTrashcan/></button>
+                {this.props.deletebutton ? <button onClick={this.handleDelete}><GoTrashcan/></button> :""}
                 {/* <button onClick={this.handleUpdate}>Update</button> */}
             </li>
         );
     }
 }
 
-export default connect(null,{deleteCommentFromState})(Comment);
+const mapStateToProps =(state) => {
+  return {
+    user:state.user.user,
+    token:state.user.token
+  }
+}
+
+export default connect(mapStateToProps,{deleteCommentFromState,deleteCommentFromAllComment,deleteEmotionFromState,deleteSentimentFromState})(Comment);
