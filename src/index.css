@@ -96,6 +96,12 @@ ul.nav li a:hover {
   background-color: rgb(82, 55, 233);
 }
 
+.charttext{
+  text-align:center;
+  margin-top: 3%;
+  color: rgb(16, 3, 189);
+}
+
 .allsearch{
   display: inline-flex;
   border:2px solid blue;
