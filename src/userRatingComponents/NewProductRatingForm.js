@@ -15,25 +15,25 @@ class NewProductRatingForm extends Component {
     e.preventDefault()
     //once set, send the new state to database
     console.log(this.state)
-    if (this.state.product_id > 0 && this.state.rating >0 && this.props?.token) {
+    // if (this.state.product_id > 0 && this.state.rating >0 && this.props?.token) {
 
-      fetch("http://localhost:3000/reviews", {
-        method: "POST",
-        body: JSON.stringify(this.state),
-        headers: {
-          'content-type': "application/json",
-          "Authorization": `bearer ${this.props.token}`
-        }
-      })
-      .then(res => res.json())
-      .then((review) => {
-        console.log(review)
-        this.props.saveUserToState(review)
-      }
-      )
-      //set local component state to previous/initial state
-      this.setState((prevState) => {return {...prevState,product_id:0,rating:0}})
-    }
+    //   fetch("http://localhost:3000/reviews", {
+    //     method: "POST",
+    //     body: JSON.stringify(this.state),
+    //     headers: {
+    //       'content-type': "application/json",
+    //       "Authorization": `bearer ${this.props.token}`
+    //     }
+    //   })
+    //   .then(res => res.json())
+    //   .then((review) => {
+    //     console.log(review)
+    //     // this.props.saveUserToState(review)
+    //   }
+    //   )
+    //   //set local component state to previous/initial state
+    //   this.setState((prevState) => {return {...prevState,product_id:0,rating:0}})
+    // }
   }
 
   //set local component state

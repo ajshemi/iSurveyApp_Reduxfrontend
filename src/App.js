@@ -9,8 +9,10 @@ import Header from './components/Header'
 import Home from './components/Home'
 import ProductContainer from './components/ProductContainer'
 import AllCommentsContainer from './components/AllCommentsContainer'
-import UserRatingContainer from './userRatingComponents/UserRatingContainer'
-// import NewUserRatingContainer from './userRatingComponents/NewUserRatingContainer'
+// import UserRatingContainer from './userRatingComponents/UserRatingContainer'
+// import RatingContainer from './userRatingComponents/RatingContainer'
+// import NewRatingContainer from './userRatingComponents/NewRatingContainer'
+import NewUserRatingContainer from './userRatingComponents/NewUserRatingContainer'
 // import WatsonSentimentContainer from './watsoncomponents/WatsonSentimentContainer' 
 // import WatsonEmotionContainer from './watsoncomponents/WatsonEmotionContainer'
 import AnalysisContainer from './components/AnalysisContainer'
@@ -153,8 +155,9 @@ class App extends React.Component {
           <Route path="/login" render={ this.renderForm } />
           <Route path="/register" render={ this.renderForm } />
           <Route path="/products" component={ ProductContainer } />
-          <Route path="/rating" component={ UserRatingContainer } />
-          {/* <Route path="/newrating" component={ NewUserRatingContainer } /> */}
+          {/* <Route path="/rating" component={ UserRatingContainer } /> */}
+          {/* <Route path="/rating" component={ NewRatingContainer } />  */}
+          <Route path="/newrating" component={ NewUserRatingContainer } />
 
           {/* <Route path="/logout" render={ this.renderLogout } /> */}
           <Route path="/allcomments" component={ AllCommentsContainer } /> 

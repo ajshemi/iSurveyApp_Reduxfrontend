@@ -35,7 +35,7 @@ class RatingSummaryContainer extends Component {
         // console.log(data4)
 
         return (
-        <div>
+        <div className="ratingsummary">
             {/* Just One Chart */}
             <button onClick={this.handleRatingFetch}>Rating Summary</button>
             <Chart chartData={chartData} legendPosition="top"/>

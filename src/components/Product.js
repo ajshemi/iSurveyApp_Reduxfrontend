@@ -24,7 +24,8 @@ class Product extends Component {
     //and last but not least we pass in 'false' to the handleClose function as an argument
     //handleClose sets this.state.open to 'false'
     handleClose=(arg) => {
-      this.setState({open:arg})
+      console.log(arg)
+      // this.setState({open:arg})
     }
 
     // close = () => this.setState({ open: false })

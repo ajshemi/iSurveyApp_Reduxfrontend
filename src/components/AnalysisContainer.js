@@ -7,7 +7,7 @@ class AnalysisContainer extends Component {
     render() { 
         // console.log(this.props)
         return (
-            <div>
+            <div className="analysispage">
                 <AnalysisList sentiments={this.props.sentiments} emotions={this.props.emotions} comments={this.props.comments}/>
             </div>
           );

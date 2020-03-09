@@ -19,8 +19,11 @@ const NavBar = (props) => {
       <li>
         <NavLink to="/products">Products</NavLink>
       </li>
-        {props.token ?  <li>
+        {/* {props.token ?  <li>
         <NavLink to="/rating">UserRating</NavLink>
+      </li> : ""} */}
+      {props.token ?  <li>
+        <NavLink to="/newrating">Rating</NavLink>
       </li> : ""}
       {props.token && props.comments.length ? <li>
         <NavLink to="/allcomments">AllComments</NavLink>

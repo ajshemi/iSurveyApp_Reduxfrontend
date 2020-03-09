@@ -96,10 +96,27 @@ ul.nav li a:hover {
   background-color: rgb(82, 55, 233);
 }
 
+/* .newratingdiv,field{
+
+
+} */
+
 .charttext{
   text-align:center;
   margin-top: 3%;
   color: rgb(16, 3, 189);
+}
+.commentlist{
+  text-align:center;
+}
+.analysispage{
+  text-align:center;
+  color: blue;
+}
+.newratingdiv{
+  text-align:center;
+  margin-top:3%;
+  margin-bottom: 1%;
 }
 
 .allsearch{
@@ -136,17 +153,23 @@ ul.nav li a:hover {
   padding-left: 3%;
 
 }
-.commentlist{
-  text-align: left;
-}
 
 .addcomment{
   text-align: center;
 }
-/* .ratingbutton{
+#inputrating{
+  margin-left: 45%;
+  margin-top: 2%;
+}
+.ratingbutton{
   margin-left: 10%;
-  margin-right:10%;
-} */
+  /* margin-right:10%; */
+}
+
+.ratingsummary{
+  text-align:center;
+  margin-top:2%
+}
 /* .modalrating{
   margin-left:30%;
   margin-right:30%;
